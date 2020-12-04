@@ -33,6 +33,8 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 
 import '../theme/theme.css';
 
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+
 export default class BalloonEditor extends BalloonEditorBase {}
 
 // Plugins to include in the build.
@@ -60,7 +62,9 @@ BalloonEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+
+	ImageResize
 ];
 
 // Editor configuration.
