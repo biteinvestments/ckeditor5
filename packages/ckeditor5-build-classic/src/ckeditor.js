@@ -22,7 +22,7 @@ import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+// import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
@@ -34,6 +34,7 @@ import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
+
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 
 
@@ -42,16 +43,23 @@ import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
 import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
 import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
 import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment'
+
+import GridLayout from './grid-layout/grid-layout';
+
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
+
 	Essentials,
 	FontSize,
 	FontFamily,
 	FontColor,
 	FontBackgroundColor,
+
+	Alignment,
 	UploadAdapter,
 	Autoformat,
 	Bold,
@@ -65,11 +73,11 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
-	Indent,
 	Link,
 	List,
 	MediaEmbed,
 	Paragraph,
+
 	PasteFromOffice,
 	Table,
 	TableToolbar,
@@ -80,7 +88,9 @@ ClassicEditor.builtinPlugins = [
 	TableProperties,
 	TableCellProperties,
 	Superscript,
-	Subscript
+	Subscript,
+	GridLayout
+
 
 
 	
@@ -90,11 +100,231 @@ ClassicEditor.builtinPlugins = [
 ClassicEditor.defaultConfig = {
 	fontFamily: {
 		options: [
-		  'default',
-		  'Ubuntu, Arial, sans-serif',
-		  'Ubuntu Mono, Courier New, Courier, monospace'
+			'Roboto',
+			'Microsoft YaHei',
+			'Arial',
+			// 'default',
+			'Ubuntu, Arial, sans-serif',
+			'Ubuntu Mono, Courier New, Courier, monospace'
 		]
-	  },
+		
+	},
+	fontSize: {
+		options: [
+			12,
+			13,
+			14,
+			'default',
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23,
+			24,
+			25,
+			26,
+			27,
+			28,
+			29,
+			30,
+			31,
+			32
+		]
+	},
+	fontColor: {
+		colors: [
+			{
+				color: 'hsl(0, 0%, 0%)',
+				label: 'Black'
+			},
+			{
+				color: 'hsl(0, 0%, 30%)',
+				label: 'Dim grey'
+			},
+			{
+				color: 'hsl(0, 0%, 60%)',
+				label: 'Grey'
+			},
+			{
+				color: 'hsl(0, 0%, 90%)',
+				label: 'Light grey'
+			},
+			{
+				color: 'hsl(0, 0%, 100%)',
+				label: 'White',
+				hasBorder: true
+			},
+			{
+				color: 'hsl(0, 75%, 60%)',
+				label: 'Red'
+			},
+			{
+				color: 'hsl(30, 75%, 60%)',
+				label: 'Orange'
+			},
+			{
+				color: 'hsl(60, 75%, 60%)',
+				label: 'Yellow'
+			},
+			{
+				color: 'hsl(90, 75%, 60%)',
+				label: 'Light green'
+			},
+			{
+				color: 'hsl(120, 75%, 60%)',
+				label: 'Green'
+			},
+			{
+				color: 'hsl(150, 75%, 60%)',
+				label: 'Aquamarine'
+			},
+			{
+				color: 'hsl(180, 75%, 60%)',
+				label: 'Turquoise'
+			},
+			{
+				color: 'hsl(210, 75%, 60%)',
+				label: 'Light blue'
+			},
+			{
+				color: 'hsl(240, 75%, 60%)',
+				label: 'Blue'
+			},
+			{
+				color: 'hsl(270, 75%, 60%)',
+				label: 'Purple'
+			},
+			{
+				color: '#559ACF',
+				label: 'Customize1'
+			},
+			{
+				color: '#1A55A3',
+				label: 'Customize2'
+			},
+			{
+				color: '#4F7491',
+				label: 'Customize3'
+			},
+			{
+				color: '#5FC5D5',
+				label: 'Customize4'
+			},
+			{
+				color: '#AA9357',
+				label: 'Customize5'
+			},
+			{
+				color: '#A8AABB',
+				label: 'Customize6'
+			},
+			{
+				color: '#2AB7F8',
+				label: 'Customize7'
+			},
+		
+		]
+	},
+	fontBackgroundColor: {
+		colors: [
+			{
+				color: 'hsl(0, 0%, 0%)',
+				label: 'Black'
+			},
+			{
+				color: 'hsl(0, 0%, 30%)',
+				label: 'Dim grey'
+			},
+			{
+				color: 'hsl(0, 0%, 60%)',
+				label: 'Grey'
+			},
+			{
+				color: 'hsl(0, 0%, 90%)',
+				label: 'Light grey'
+			},
+			{
+				color: 'hsl(0, 0%, 100%)',
+				label: 'White',
+				hasBorder: true
+			},
+			{
+				color: 'hsl(0, 75%, 60%)',
+				label: 'Red'
+			},
+			{
+				color: 'hsl(30, 75%, 60%)',
+				label: 'Orange'
+			},
+			{
+				color: 'hsl(60, 75%, 60%)',
+				label: 'Yellow'
+			},
+			{
+				color: 'hsl(90, 75%, 60%)',
+				label: 'Light green'
+			},
+			{
+				color: 'hsl(120, 75%, 60%)',
+				label: 'Green'
+			},
+			{
+				color: 'hsl(150, 75%, 60%)',
+				label: 'Aquamarine'
+			},
+			{
+				color: 'hsl(180, 75%, 60%)',
+				label: 'Turquoise'
+			},
+			{
+				color: 'hsl(210, 75%, 60%)',
+				label: 'Light blue'
+			},
+			{
+				color: 'hsl(240, 75%, 60%)',
+				label: 'Blue'
+			},
+			{
+				color: 'hsl(270, 75%, 60%)',
+				label: 'Purple'
+			},
+			{
+				color: '#559ACF',
+				label: 'Customize1'
+			},
+			{
+				color: '#1A55A3',
+				label: 'Customize2'
+			},
+			{
+				color: '#4F7491',
+				label: 'Customize3'
+			},
+			{
+				color: '#5FC5D5',
+				label: 'Customize4'
+			},
+			{
+				color: '#AA9357',
+				label: 'Customize5'
+			},
+			{
+				color: '#A8AABB',
+				label: 'Customize6'
+			},
+			{
+				color: '#2AB7F8',
+				label: 'Customize7'
+			},
+		
+		]
+	},
+	alignment: {
+		options: [ 'left', 'right','center','justify' ]
+	},
 	toolbar: {
 		
 		items: [
@@ -112,16 +342,20 @@ ClassicEditor.defaultConfig = {
 			'superscript',
 			'bulletedList',
 			'numberedList',
-			'|',
-			'indent',
-			'outdent',
+			// '|',
+			// 'indent',
+			// 'outdent',
 			'|',
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'|',
+			'alignment',
+			'|',
+			'gridLayout'
 		]
 	},
 	image: {
@@ -141,6 +375,9 @@ ClassicEditor.defaultConfig = {
 			'tableCellProperties'
 		]
 	},
+	// alignment: {
+	// 	options: ['left', 'right']
+	// },
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
